@@ -1,0 +1,136 @@
+#NIM = 2510932023
+#XY= 23
+
+XY = 23
+
+daftar = [{"Nomor": "1", "Nama" : "One Ok Rock ", "Agency" : "United Talent Agency (UTA)", "Asal Negara" : "Jepang ", "Fee ($)" : 150000, "Hit Single" : "Stand Out Fit In", "Durasi Kontrak (hari)" : XY + 1}, 
+        { "Nomor": "2", "Nama" : "Stray Kids", "Agency" : "JYP Entertainment", "Asal Negara" : "Korea Selatan ", "Fee ($)" : 400000, "Hit Single" : "Maniac", "Durasi Kontrak (hari)" : XY + 2},
+        {"Nomor": "3", "Nama" : "Feast", "Agency" : "Rusa Record ", "Asal Negara" : "Indonesia", "Fee ($)" : 10000, "Hit Single" : "Peradaban", "Durasi Kontrak (hari)" : XY + 3},
+        { "Nomor": "4", "Nama" : "One Direction (Reborn) ", "Agency" : "Syco Music ", "Asal Negara" : "Inggris ", "Fee ($)" : 1500000, "Hit Single" : "What Make You Beautiful", "Durasi Kontrak (hari)" : XY + 2},
+        { "Nomor": "5", "Nama" : "Kendrick Lamar ", "Agency" : "Wasserman Music ", "Asal Negara" : "USA ", "Fee ($)" : 750000, "Hit Single" : "Humble", "Durasi Kontrak (hari)" : XY + 1}
+]
+
+awal = [{"Nomor": "1", "Nama" : "One Ok Rock ", "Agency" : "United Talent Agency (UTA)", "Asal Negara" : "Jepang ", "Fee ($)" : 150000, "Hit Single" : "Stand Out Fit In", "Durasi Kontrak (hari)" : 24}, 
+        { "Nomor": "2", "Nama" : "Stray Kids", "Agency" : "JYP Entertainment", "Asal Negara" : "Korea Selatan ", "Fee ($)" : 400000, "Hit Single" : "Maniac", "Durasi Kontrak (hari)" :25},
+        {"Nomor": "3", "Nama" : "Feast", "Agency" : "Rusa Record ", "Asal Negara" : "Indonesia", "Fee ($)" : 10000, "Hit Single" : "Peradaban", "Durasi Kontrak (hari)" : 26},
+        { "Nomor": "4", "Nama" : "One Direction (Reborn) ", "Agency" : "Syco Music ", "Asal Negara" : "Inggris ", "Fee ($)" : 1500000, "Hit Single" : "What Make You Beautiful", "Durasi Kontrak (hari)" : 25},
+        { "Nomor": "5", "Nama" : "Kendrick Lamar ", "Agency" : "Wasserman Music ", "Asal Negara" : "USA ", "Fee ($)" : 750000, "Hit Single" : "Humble", "Durasi Kontrak (hari)" : 24 }
+]
+while True :
+    print("")
+    print("==== Menu Pilihan Indonesia World Show ====")
+    print("1. Menampilkan data awal")
+    print("2. Menambahkan daftar")
+    print("3. Menghapus daftar")
+    print("4. Mengubah fee / durasi")
+    print("5. Menghitung total estimasi")
+    print("6. Menghitung rata-rata fee")
+    print("7. Hitung pendapatan bersih")
+    print("8. Menampilkan data setelah perubahan")
+    print("9. Keluar")
+
+    pilihan = input ("Masukkan pilihan (1-9) : ")
+
+    if pilihan == "1" :
+        print ("")
+        print("=== Data Awal ===")
+        for data in awal :
+            for key in data :
+                print ( key , ":" , data[key])
+            print ("--------------------------")
+
+    elif pilihan == "2" :
+       print ("")
+       print ("=== Menambahkan Daftar ===")
+       a = input("Nomor :")
+       b = input ("Nama : ")
+       c= input("Agency : ")
+       d= input("Asal : ").strip()
+       e= int(input("Fee ($): "))
+       f= (input("Hit single : "))
+       g= int(input("Durasi kontrak : "))
+       tambah = {"Nomor": a, "Nama" : b, "Agency" : c, "Asal Negara" : d, "Fee ($)" : e, "Hit Single" : f, "Durasi Kontrak (hari)" : g} 
+       daftar.append(tambah)
+       print("--- Berhasil Ditambahkan ---")
+
+    elif pilihan == "3" :
+        print ("")
+        print("=== Menghapus Daftar ===")
+        nomor = input("Masukkan nomor data: " ).strip()
+        for data in daftar :
+            if data["Nomor"] == nomor :
+                daftar.remove(data)
+                print("--- Berhasil Dihapus ---")
+                break
+        else :
+            print("Tidak Valid")
+    
+    elif pilihan == "4" :
+        print ("")
+        print("=== Mengubah Fee / Durasi ===")
+        nomor = input("Masukkan nomor data: " ).strip()
+        for data in daftar :
+            if data["Nomor"] == nomor :
+                print("1. Ubah fee")
+                print("2. Ubah durasi tampil")
+                ubah = (input("Masukkan pilihan (1/2) : "))
+                if ubah == "1" :
+                    data["Fee ($)"] = int(input("Masukkan harga baru : "))
+                    print("--- Berhasil Diubah ---")
+                    break
+                elif ubah == "2" :
+                    data["Durasi Kontrak (hari)"] = int(input("Masukkan durasi baru : "))
+                    print("--- Berhasil Diubah ---")
+                    break
+        else : 
+           print("Tidak valid")
+
+    elif pilihan == "5" :
+        print ("")
+        print("=== Menghitung Estimasi Biaya ===")
+        total = 0
+        for data in daftar :
+            estimasi = int(data["Fee ($)"] * data["Durasi Kontrak (hari)"])
+            total += estimasi
+        print("")
+        print("Estimasi biaya kontrak seluruh artis adalah $", total)
+
+    elif pilihan == "6" :
+        print ("")
+        print("=== Menghitung Rata-Rata Fee ===")
+        jumlah = 0
+        for data in daftar :
+            jumlah += int(data["Fee ($)"])
+            mean = int(jumlah/len(daftar))
+        print("")
+        print("Rata-rata biaya tampil (fee) seluruh artis adalah $", mean)
+    
+    elif pilihan == "7" :
+        print ("")
+        print("=== Menghitung Pendapatan Bersih ===")
+        bersih = 0
+        for data in daftar :
+            biaya = int(data["Fee ($)"] * data["Durasi Kontrak (hari)"])
+            if data["Asal Negara"].lower().strip() == "indonesia" :
+                setelah_pajak = int(biaya * 0.08)
+            else  :
+                setelah_pajak = int(biaya * 0.18)
+            bersih += setelah_pajak
+        print("Pendapatan bersih adalah $", bersih)
+    
+    elif pilihan == "8" :
+        print("")
+        print("=== Daftar Akhir ===")
+        for data in daftar :
+            for key in data :
+                print(key , ":" , data[key])
+            print ("--------------------------")
+    
+    elif pilihan == "9" :
+        print("")
+        print("=== SELESAI ===")
+        break
+
+    else :
+        print("")
+        print ("=== TIDAK VALID ===")
