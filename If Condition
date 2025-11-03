@@ -1,0 +1,68 @@
+print("======== HelloMart ========""\n")
+Nama = input("Nama :")
+ABCD = input("NIM :" )
+Kelompok = input("Kelompok :")
+Asisten_Pembimbing = input("Asisten pembimbing :")
+
+#Total belanja
+ABC = int(ABCD[6:9])
+Belanja = ABC*1000
+
+#Membership
+D = int(ABCD[9])
+
+if 1 <= D <= 4 :
+    member = "Silver"
+    Diskon = 5
+elif 5 <= D <= 7 :
+    member = "Gold"
+    Diskon = 10
+elif 8 <= D <= 9 :
+    member = "Platinum"
+    Diskon = 15
+else :
+    member = "Non-member"
+    Diskon = 0
+
+#Diskon
+Potongan = Belanja * (Diskon/100)
+
+#Harga setelah diskoon
+Harga = Belanja - Potongan
+
+#Bayar
+print("\nPEMBAYARAN")
+print("1. Tunai")
+print("2. QRIS")
+print("3. Debit")
+
+buy = input("Pilih pembayaran (1/2/3):")
+
+if buy == "1":
+    bayar = "Tunai"
+    Admin = 0
+elif buy == "2" :
+    bayar = "QRIS"
+    Admin = 2500
+elif buy == "3" :
+    bayar = "Debit"
+    Admin = 5000
+else :
+    print ("Tidak tersedia")
+
+# Akhir
+Totalbayar= Harga + Admin
+
+print("")
+print("-----------------------------------""\n")
+print("Total belanja : Rp ", Belanja)
+print("Jenis membership : ", member)
+print ("Diskon :", Diskon , "%")
+print("Besaran diskon : Rp ", Potongan )
+print ("Total Belanja setelah diskon : Rp ", Harga)
+print("Metode pembayaran : ", bayar)
+print("Biaya tambahan : Rp ", Admin)
+print("Total biaya yang dibayar : Rp ", Totalbayar)
+print("")
+print("-----------------------------------""\n")
+print ("===== Terimakasih Sudah Berbelanja =====")
