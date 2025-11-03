@@ -1,0 +1,62 @@
+# pin admin
+nim = input("NIM = ")
+pinadm= int(nim[6:])
+
+# login
+percobaan = 0
+while percobaan < 3:
+    pin = int(input("Masukkan PIN admin bioskop (4 angka terakhir NIM): "))
+    if pin == pinadm:
+        print("Login berhasil!\n")
+    
+    # Jika PIN benar, masuk ke pemesanan
+        while True:
+             print ("=== Daftar Film Bioskop ===")
+             print ("1. Jumbo = Rp 40000") 
+             print ("2. Coco = Rp 45000") 
+             print ("3. Doraemon = Rp 50000") 
+             print ("4. Moana = Rp 60000\n")
+            
+             pilih = int(input("Masukkan film yang ingin anda beli (1/2/3/4) ="))
+
+                #harga tiket
+             if pilih == 1 :
+                 film = "Jumbo"
+                 harga = 40000
+
+             elif pilih == 2 :
+                 harga = 45000
+                 film = "Coco"
+             elif pilih == 3 :
+                 harga = 50000
+                 film = "Doraemon"
+             elif pilih == 4 :
+                 harga = 60000
+                 film = "Moana"
+             else :
+                 print("\n Pilihan tidak tersedia!\n")
+                 continue
+     
+             jumlah = int(input("Masukkan jumlah tiket :"))
+             total = harga * jumlah
+
+             print ("Film yang dipesan =", film)
+             print ("Total harga =", total)
+    
+             #ulang transaksi
+             ulang = input("Apakah anda ingin melakukan transaksi lagi? (ya/tidak) :").lower()
+             print()
+             if ulang == "ya" :
+                 continue
+             elif ulang == "tidak" :
+                 print ("===Terimakasih===")
+                 break     
+        break 
+    else:
+        percobaan += 1
+        if percobaan < 3 :
+             print("PIN salah! Percobaan ke-", percobaan)
+        elif percobaan >= 3 :
+             print ("Percobaan habis!")
+             break
+
